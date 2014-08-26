@@ -1,0 +1,34 @@
+#!/bin/sh
+
+if [ "$#" != "2" ] ; then
+        echo "Usar check_postfix <queueactive> <queredeferred>"
+        echo "   :: check_postfix_zimbra 350 1000"
+        exit 2
+fi
+
+queueMin="$1"
+queueMax="$2"
+spool=$(grep queue_directory /opt/zimbra/postfix/conf/main.cf | awk -F = '{ gsub(/ /,"") ; print$2 }')
+
+deferred=$(find ${spool}/deferred -type f | wc -l)
+maildrop=$(find ${spool}/maildrop -type f | wc -l)
+active=$(find ${spool}/active -type f | wc -l)
+incoming=$(find ${spool}/incoming -type f | wc -l)
+
+echo -n "[D:${deferred}] [A:${active}] [M:${maildrop}] [I:${incoming}] "
+
+if [ "${active}" -lt "${queueMin}" ] && [ "${deferred}" -lt "${queueMax}" ] && [ "${maildrop}" -lt "${queueMax}" ] && [ "${incoming}" -lt "${queueMax}" ] ; then
+        exit 0
+elif [ "${active}" -gt "$(expr ${queueMin} + 300)" ] || [ "${deferred}" -gt "$(expr ${queueMax} + 500)" ] || [ "${maildrop}" -gt "$(expr ${queueMax} + 500)" ] || [ "${incoming}" -gt "$(expr ${queueMax} + 500)" ]  ; then
+        exit 2
+elif [ "${active}" -gt "${queueMin}" ] || [ "${deferred}" -gt "${queueMax}" ] || [ "${maildrop}" -gt "${queueMax}" ] || [ "${incoming}" -gt "${queueMax}" ] ; then
+        exit 1
+else
+        exit 2
+fi#!/bin/sh
+
+if [ "$#" != "2" ] ; then
+        echo "Usar check_postfix <queueactive> <queredeferred>"
+        echo "   :: check_postfix_zimbra 350 1000"
+        exit 2
+fi
