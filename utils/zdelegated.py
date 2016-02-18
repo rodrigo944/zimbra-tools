@@ -98,7 +98,7 @@ class ZDelegated(object):
 
     try:
       print 'Configuring GRANTS...'
-      domain_name = self.zdelegated_admin_account.split('@')[1]
+      domain_name = self.dlist_name.split('@')[1]
       for zgrant in ZimbraGrants(domain_name, self.dlist_name):
         print 'target_name: %s target_type: %s grantee_name: %s grantee_type: %s right: %s' % \
          (zgrant.target_name, zgrant.target_type, zgrant.grantee_name, zgrant.grantee_type, zgrant.right)
