@@ -123,6 +123,9 @@ def prov_account(ldp_cnf, ldap_query, attrs):
           value = value.replace('\n', '\\n')
           # We need to escape single quotes.
           value = value.replace("'", "\\'")
+          if zimbra_attr == 'zimbraPrefMailForwardingAddress':
+            # zimbraPrefMailForwardingAddress must always have accounts separated by comma
+            value = value.replace(';', ',')
 
           print "'%s'" % value,
       except KeyError:
@@ -145,6 +148,8 @@ def provDistributionList(ldp_conf, ldap_query, attrs):
     distribution_list_name = entry['mail'][0]
     print 'createDistributionList', distribution_list_name
     print 'addDistributionListMember', distribution_list_name, 
+    if not 'zimbraMailForwardingAddress' in entry:
+      continue
     for member in entry['zimbraMailForwardingAddress']:
       print member,
     # Break line, distribution list member finished

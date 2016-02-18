@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # Requires: python-requests
 
 import requests, string
@@ -71,7 +72,7 @@ def usage():
 
 if __name__ == '__main__':
   try:
-    opts, args = getopt.getopt(sys.argv[1:], "s:u:p:h:", ['activesync', 'webmail', 'devid=', 'devtype='])
+    opts, args = getopt.getopt(sys.argv[1:], "s:u:p:h:", ['check=', 'devid=', 'devtype='])
   except getopt.GetoptError, ex:
     print ex
     usage()
@@ -96,19 +97,21 @@ if __name__ == '__main__':
       runcheck = i[0]
     elif i[0] == '--webmail':
       runcheck = i[0]
+    elif i[0] == '--check':
+      runcheck = i[1]
     elif i[0] == '-h':
       usage()
     else:
       print 'Wrong args'
       usage()
 
-  if runcheck == '--activesync':
+  if runcheck == 'activesync':
     if True in [param == None for param in [username, server, password, dev_id, dev_type]]:
       print 'missing parameters'
       usage()
     else:
       activesync(username, password, server, dev_id, dev_type)
-  elif runcheck == '--webmail':
+  elif runcheck == 'webmail':
     if True in [param == None for param in [username, server, password]]:
       print 'missing parameters'
       usage()
