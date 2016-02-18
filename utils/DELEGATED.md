@@ -20,25 +20,25 @@ zdelegated --help
 #### Creating a new delegated user with default grants
 
 ```bash
-zdelegated -a target_delegated_account@mydomain.tld --admin global_admin@mydomain.tld --dlist mydomain_tld_perms@inova.net -s zimbra_server_hostname
+zdelegated -a target_delegated_account@mydomain.tld --admin global_admin@mydomain.tld --dlist mydomain_tld_perms@domain.tld -s zimbra_server_hostname
 ```
 
 #### Appeding an user to a perm delegated distribution list
 
 ```bash
 # The user target_delegated_account@mydomain.tld will not be created
-zdelegated -a target_delegated_account@mydomain.tld --admin global_admin@mydomain.tld --dlist mydomain_tld_perms@inova.net -s zimbra_server_hostname --append
+zdelegated -a target_delegated_account@mydomain.tld --admin global_admin@mydomain.tld --dlist mydomain_tld_perms@domain.tld -s zimbra_server_hostname --append
 ```
 
 #### Adding additional grants
 
 ```bash
-zdelegated -a target_delegated_account@mydomain.tld --admin global_admin@mydomain.tld --dlist mydomain_tld_perms@inova.net -s zimbra_server_hostname --grants Grant01,Grant02
+zdelegated -a target_delegated_account@mydomain.tld --admin global_admin@mydomain.tld --dlist mydomain_tld_perms@domain.tld -s zimbra_server_hostname --grants Grant01,Grant02
 ```
 
 
 #### Debbuging
 
 ```bash
-zdelegated -a target_delegated_account@mydomain.tld --admin global_admin@mydomain.tld --dlist mydomain_tld_perms@inova.net -s zimbra_server_hostname --debug
+zdelegated -a target_delegated_account@mydomain.tld --admin global_admin@mydomain.tld --dlist mydomain_tld_perms@domain.tld -s zimbra_server_hostname --debug
 ```
