@@ -12,7 +12,7 @@ fi
 command -v curl >/dev/null 2>&1 || { echo >&2 "Requires curl. Aborting..."; exit 1; }
 
 curl --silent -L https://raw.githubusercontent.com/inova-tecnologias/zimbra-tools/master/utils/zdelegated.py -o /usr/local/bin/zdelegated
-curl --silent -L https://github.com/inova-tecnologias/zimbra-tools/blob/master/utils/zrequests.py -o /usr/local/bin/zrequests.py
+curl --silent -L https://raw.githubusercontent.com/inova-tecnologias/zimbra-tools/master/utils/zrequests.py -o /usr/local/bin/zrequests.py
 
 chmod 755 /usr/local/bin/zdelegated
 echo "Installation completed!"
