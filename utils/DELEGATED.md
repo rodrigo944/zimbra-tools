@@ -1,7 +1,7 @@
 ### Pre Requirements
 
-argparse
-python-zimbra
+- argparse
+- python-zimbra
 
 ### Installer
 
@@ -11,7 +11,11 @@ Tested on ubuntu 14
 curl --silent -L https://raw.githubusercontent.com/inova-tecnologias/zimbra-tools/master/utils/zdelegated_bootstrap.sh | sudo sh -s --
 ```
 
+#### Help
+
+```bash
 zdelegated --help
+```
 
 #### Creating a new delegated user with default grants
 
