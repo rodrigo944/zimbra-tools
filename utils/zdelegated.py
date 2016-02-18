@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from zrequests import ZimbraRequest, ZimbraRequestError
 from collections import namedtuple
 import sys, argparse, getpass
