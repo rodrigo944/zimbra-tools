@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 if ! $(python -c "import pythonzimbra" &> /dev/null); then
   command -v pip >/dev/null 2>&1 || { echo >&2 "Requires pip. Aborting..."; exit 1; }
   pip install python-zimbra
